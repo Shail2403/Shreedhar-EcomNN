@@ -1,0 +1,42 @@
+{% extends 'shop/basic.html' %} 
+{% block title%} Contact श्रीधर Entp.{% endblock%}
+{% block body%} 
+
+<div class="container my-3 ">
+    <h1>Contact Us for Queries</h1>
+    <form action="/shop/contact/" method="post" onsubmit="showAlert()">  {% csrf_token %}
+        <div class="form-group">
+            <label for="name">Name</label>
+            <input type="text" class="form-control" id="name" name="name" placeholder="Enter Your Name" required>
+        </div>
+        <div class="form-group">
+            <label for="name">Email</label>
+            <input type="email" class="form-control" id="email"  name="email"  placeholder="Enter Your Email" required>
+        </div>  
+        <div class="form-group">
+            <label for="phone">Phone No.</label>
+            <input type="tel" class="form-control" id="phone"  name="phone" placeholder="Enter Your Phone Number" required>
+        <div class="form-group"  style="padding:15px;">
+            <label for="desc"><b><em>How May We Help You ?</em></b></label>
+            <textarea class="form-control" id="desc" name="desc" rows="3" placeholder="Enter What You Want..." required></textarea>
+            <div class="form-group" style="display: flex; align-items: center; height: 100%;">
+                <label for="desc" style="margin-right: 10px; height: 100%; color: blue; text-decoration: underline;"><em>Upload</em></label>
+                <input type="file" class="form-control-file" id="desc" style="margin-top: 5px; padding: 5px; border: 1px solid #ccc; border-radius: 5px; height: 100%;">
+            </div>
+            <button type="submit" class="btn btn-success">SUBMIT </button>
+
+    </form>
+
+
+</div>
+
+{% endblock%}
+
+{% block js%}
+<script>
+    function showAlert() {
+        alert('Form submitted successfully!');
+    }
+</script>
+{%endblock%}
+ 

@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+    <title>Collections</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        body {
+            background: radial-gradient(circle, #041a30, #001122);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+            color: white;
+        }
+
+        .jumbotron {
+            position: relative;
+            background-color: white; /* Set background color of the inner box */
+            padding: 20px; /* Add some padding to the inner box */
+            border-radius: 10px; /* Optional: Add border-radius for rounded corners */
+            color: #001122; /* Set text color for better visibility against white background */
+        }
+
+        .animated-text-container {
+            position: relative;
+            font-family: 'Arial', sans-serif;
+            font-size: 36px;
+            font-weight: bold;
+            text-align: center;
+            color: transparent;
+            overflow: hidden;
+        }
+
+        .animated-text {
+            background: linear-gradient(90deg, #001122, #001c37, #002552, #00346e, #004590, #005bb6, #0071d7, #0086fc);
+            -webkit-background-clip: text;
+            animation: colorChange 6s infinite, spaceText 5s infinite;
+            transition: transform 0.5s;
+        }
+
+        @keyframes colorChange {
+            0%, 100% {
+                background-position: 100% 0%;
+            }
+            50% {
+                background-position: -100% 0%;
+            }
+        }
+
+        @keyframes spaceText {
+            0% {
+                transform: translateY(0);
+            }
+            50% {
+                transform: translateY(10px);
+            }
+            100% {
+                transform: translateY(0);
+            }
+        }
+
+        .animated-text:hover {
+            transform: scale(1.1);
+        }
+
+        .copyright-symbol {
+            position: absolute;
+            top: 1px;
+            right:5px;
+            font-size: 20px;
+            color: #001122; /* Set the same color as the first gradient color */
+        }
+    </style>
+</head>
+<body>
+<div class="jumbotron text-center">
+    <div class="copyright-symbol">™️ ©</div>
+    <h1 class="display-4">Welcome to MY Collections!</h1>
+    <div class="animated-text-container">
+        <div class="animated-text">By <span>SHAIL SHAH</span></div>
+    </div>
+    <p class="lead">Discover a user-friendly platform designed to showcase curated content and information with a modern aesthetic.</p>
+    <hr class="my-4">
+    <p>Created an immersive environment for presenting a diverse range of products and offerings..!!</p>
+    <a class="btn btn-primary btn-lg" href="/shop" role="button" style="margin-right:300px;margin-left:200px;"><strong>SHOP</strong></a>
+    <a class="btn btn-primary btn-lg" href="/blog" role="button" style="margin-right:200px;margin-left:300px;"><strong>BLOG</strong></a>
+</div>
+<!-- Optional JavaScript -->
+<!-- jQuery first, then Popper.js, then Bootstrap JS -->
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.7/dist/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+</body>
+</html>

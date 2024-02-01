@@ -1,0 +1,117 @@
+{% extends 'shop/basic.html' %} 
+{% block title%} Tracking At श्रीधर Entp. {% endblock%}
+{% block body%}
+
+<div class="container">
+  <div class="col my-4">
+    <h2>📦TRACKING at  NNs'🛍️ </h2>
+    <div style="border: 2px solid #3498db; border-radius: 10px; padding: 10px; background-color: #f0f8ff;">
+        <p style="color: #3498db; font-weight: bold;">Provide the Order ID and Email Address to get tracking details.</p>
+    </div>
+        <form method="post"  action="/shop/checkout/" id="TrackerForm">{% csrf_token%}
+        <div class="form-row"  style="padding:25px;margin-left:0">
+            <div class="form-group col-md-6" >
+                <label for="inputname" style="font-weight: 500; font-style: italic;">Order ID</label>
+                <input type="number" class="form-control" id="orderId" name="orderId" placeholder="Order ID" required>
+            </div>
+            <div class="form-group col-md-6">
+                <label for="inputEmail4" style="font-weight: 500; font-style: italic;">Email</label>
+                <input type="email" class="form-control" id="email" name="email" placeholder="Email" required>
+            </div>
+            
+        <button type="submit" class="btn btn-primary">Track Order</button>
+        </div> 
+    </div>
+
+    <div class="col my-4">
+        <h3>Your Order Status: </h3>
+        <div  class='my-3'>
+            <ul class="list-group" id="items">
+            </ul>
+          </div>
+          <h3>Items In  this Order: </h3>
+        <div  class='my-3'>
+            <ul class="list-group" id="citems">
+            </ul>
+        </div>
+    </div>
+</div>
+
+{% endblock%}
+
+{% block js%}
+<script> 
+   $('#TrackerForm').submit(function(event){
+        $('#items').empty();
+        var formData = {
+            'orderId':$('input[name=orderId]').val(),
+            'email':$('input[name=email]').val(),
+            'csrfmiddlewaretoken':$('input[name=csrfmiddlewaretoken]').val()
+        };
+
+        $.ajax({
+            type: 'POST',
+            url:'/shop/tracker/',
+            data:formData,
+            encode: true,
+
+   })
+   .done(function(data) {
+        console.log(data)
+        data=JSON.parse(data);
+        //updates=JSON.parse(data); //updates
+        //updates=data[0];        
+        if (data['status']=='success') { 
+            updates=data['updates'];
+                   //updates.length>0
+            for( i=0;i<updates.length;i++){
+                let text =updates[i]['text'];
+                let time =updates[i]['time'];
+                mystr= ` <li
+                class="list-group-item d-flex justify-content-between align-items-center" >
+                ${text}
+                <span class="badge badge-primary badge-pill">${time}</span>
+            </li>`
+            //            <span class="ml-4">SubPrice: ${qty}</span>
+
+            $('#items').append(mystr);
+    }
+      //items in Tracker
+    //cart=JSON.parse(data[1]);
+    cart=JSON.parse(data['itemsJson']);
+    console.log(cart);
+    for( item in cart){
+        let name =cart[item][1];
+        let qty = cart[item][0];
+        //let price = cart[item][2] ;
+         //sum=sum+qty;
+         //total_bill=total_bill+ price * qty;   
+         //let price = {{product.price}};
+         //let SubPrice = qty * price;
+        mystr= ` <li
+        class="list-group-item d-flex justify-content-between align-items-center" >
+        ${name}
+        <span class="badge badge-primary badge-pill">${qty}</span>
+        </li>`
+        //<span class="ml-4">SubPrice: ${qty}</span>   Item - Rs.${price}
+        $('#citems').append(mystr);  
+    } 
+    }     
+    else{
+        mystr= ` <li
+        class="list-group-item d-flex justify-content-between align-items-center" >
+        Sorry , No Updates....Enter Valid Details</li>`
+        $('#items').append(mystr);
+        $('#citems').append(mystr);  
+    } 
+
+
+   });
+
+   event.preventDefault();
+
+});
+
+</script>
+{% endblock%}
+
