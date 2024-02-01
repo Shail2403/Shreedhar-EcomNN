@@ -1,0 +1,2 @@
+web: gunicorn mac.wsgi --log-file -
+release: bash release.sh
