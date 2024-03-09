@@ -1,2 +1,2 @@
 # Shreedhar-EcomNN
-Local shoping website using Django 
+Local shopping website using Django 
